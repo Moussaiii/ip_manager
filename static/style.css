@@ -1,0 +1,58 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #343a40;
+}
+
+table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.btn {
+    margin: 2px;
+}/* Style global des boutons */
+button {
+    background-color: #007bff; /* Bleu pour les boutons */
+    color: white;
+    border: 1px solid transparent; /* Bordure discrète */
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 5px; /* Pour espacer un peu les boutons */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+}
+button.delete {
+    background-color: #dc3545;
+}
+button.delete:hover {
+    background-color: #c82333;
+}
+button.confirm {
+    background-color: #28a745;
+}
+button.confirm:hover {
+    background-color: #218838;
+}

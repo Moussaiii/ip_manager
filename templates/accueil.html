@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>IP Manager - Accueil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='accueil.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero" style="background-image: url('{{ url_for('static', filename='images/banner.jpg') }}');">
+        <div class="hero-content">
+            <h1>Bienvenue sur <span class="highlight">IP Manager</span></h1>
+            <p>Gérez, surveillez et explorez votre réseau local facilement.</p>
+            <div class="buttons">
+                <a href="/login" class="btn admin">Connexion Admin</a>
+                <a href="/login/user" class="btn user">Connexion Utilisateur</a>
+            </div>
+        </div>
+    </header>
+    <section class="features">
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/scan.svg') }}" alt="Scan réseau" width="80">
+            <h3>Scan du réseau</h3>
+            <p>Analyse une plage IP et détecte les appareils actifs.</p>
+        </div>
+        
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/mac.svg') }}" alt="Adresse MAC" width="80">
+            <h3>Adresse MAC</h3>
+            <p>Affiche l’adresse MAC et le nom de l’hôte pour chaque appareil.</p>
+        </div>
+        
+        <div class="feature">
+            <img src="{{ url_for('static', filename='images/admin.svg') }}" alt="Admin" width="80">
+            <h3>Accès Admin</h3>
+            <p>Interface sécurisée pour administrateurs avec options avancées.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 - IP Manager. Conçu pour la gestion réseau.</p>
+    </footer>
+</body>
+</html>

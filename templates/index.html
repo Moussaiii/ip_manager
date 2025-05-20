@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IP Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body class="p-4">
+    <h1 class="mb-4">Gestionnaire d'adresses IP</h1>
+
+    {% if session.get('role') == 'admin' %}
+    <form action="/add" method="POST" class="mb-4">
+      <input
+        type="text"
+        name="cidr"
+        placeholder="Ex: 192.168.1.0/24"
+        required
+        class="form-control w-25"
+      />
+      <button type="submit" class="btn btn-primary mt-2">
+        Scanner
+      </button>
+    </form>
+    {% endif %}
+
+    <form action="/deleteAll" method="post" class="mb-4">
+      <button type="submit" class="btn btn-danger">
+        Supprimer toutes les adresses
+      </button>
+    </form>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Adresse IP</th>
+          <th>Statut</th>
+          <th>Adresse MAC</th>
+          <th>Nom de la machine</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ip in ips %}
+        <tr>
+          <td>{{ ip[0] }}</td>
+          <td>{{ ip[1] }}</td>
+          <td>{{ ip[2] or 'N/A' }}</td>
+          <td>{{ ip[3] or 'N/A' }}</td>
+          <td>{{ ip[4] or 'N/A' }}</td>
+          {% if session.get('role') == 'admin' %}
+          <td class="text-center">
+            <form action="/update/{{ ip[0] }}" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-warning btn-sm me-2">
+                Changer état
+              </button>
+            </form>
+            <form action="/delete/{{ ip[0] }}" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger btn-sm">
+                Supprimer
+              </button>
+            </form>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
